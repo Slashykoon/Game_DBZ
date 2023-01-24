@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- -->
+<TextureAtlas Name="Cell" width="1882" height="10523" scale="1" format="RGBA8888">
+  <sprite n="Stand/Cell1.PNG" x="3" y="453" w="107" h="183" pX="0.5" pY="0.5"/>
+  <sprite n="Stand/Cell2.PNG" x="118" y="452" w="107" h="184" pX="0.5" pY="0.5"/>
+  <sprite n="Stand/Cell3.PNG" x="233" y="451" w="109" h="185" pX="0.5" pY="0.5"/>
+  <sprite n="Stand/Cell4.PNG" x="350" y="451" w="109" h="185" pX="0.5" pY="0.5"/>
+
+  <sprite n="StandHurt/Cell1.PNG" x="9" y="8009" w="107" h="184" pX="0.5" pY="0.5"/>
+  <sprite n="StandHurt/Cell2.PNG" x="124" y="8010" w="97" h="182" pX="0.5" pY="0.5"/>
+  <sprite n="StandHurt/Cell3.PNG" x="240" y="8024" w="91" h="168" pX="0.5" pY="0.5"/>
+  <sprite n="StandHurt/Cell4.PNG" x="354" y="8038" w="94" h="151" pX="0.5" pY="0.5"/>
+
+  <sprite n="Walk/Cell1.PNG" x="18" y="828" w="116" h="169" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Cell2.PNG" x="153" y="829" w="116" h="173" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Cell3.PNG" x="294" y="828" w="109" h="174" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Cell4.PNG" x="435" y="826" w="101" h="177" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Cell5.PNG" x="570" y="826" w="98" h="177" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Cell6.PNG" x="687" y="826" w="113" h="177" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Cell7.PNG" x="813" y="828" w="121" h="175" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Cell8.PNG" x="955" y="827" w="116" h="176" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Cell9.PNG" x="1104" y="826" w="105" h="177" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Cell10.PNG" x="1245" y="827" w="102" h="172" pX="0.5" pY="0.5"/>
+
+</TextureAtlas>

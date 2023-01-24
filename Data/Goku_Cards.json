@@ -1,0 +1,447 @@
+{
+  "frames": {
+    "h3000_103_carte.jpg": {
+      "frame": {
+        "x": 10,
+        "y": 10,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h3000_118_carte.jpg": {
+      "frame": {
+        "x": 496,
+        "y": 10,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h3000_17519_carte.jpg": {
+      "frame": {
+        "x": 982,
+        "y": 10,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h3000_206_carte.jpg": {
+      "frame": {
+        "x": 1468,
+        "y": 10,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h3000_26098_carte.jpg": {
+      "frame": {
+        "x": 1954,
+        "y": 10,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h3000_27150_carte.jpg": {
+      "frame": {
+        "x": 2440,
+        "y": 10,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h3000_30984_carte.jpg": {
+      "frame": {
+        "x": 10,
+        "y": 711,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h3000_317_carte.jpg": {
+      "frame": {
+        "x": 496,
+        "y": 711,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h3000_356_carte.jpg": {
+      "frame": {
+        "x": 982,
+        "y": 711,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h3000_459_carte.jpg": {
+      "frame": {
+        "x": 1468,
+        "y": 711,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h3000_509_carte.jpg": {
+      "frame": {
+        "x": 1954,
+        "y": 711,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h3000_612_carte.jpg": {
+      "frame": {
+        "x": 2440,
+        "y": 711,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h3000_753_carte.jpg": {
+      "frame": {
+        "x": 10,
+        "y": 1412,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h3000_781_carte.jpg": {
+      "frame": {
+        "x": 496,
+        "y": 1412,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h3000_806_carte.jpg": {
+      "frame": {
+        "x": 982,
+        "y": 1412,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h3000_842_carte.jpg": {
+      "frame": {
+        "x": 1468,
+        "y": 1412,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h3000_942_carte.jpg": {
+      "frame": {
+        "x": 1954,
+        "y": 1412,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "h3000_974_carte.jpg": {
+      "frame": {
+        "x": 2440,
+        "y": 1412,
+        "w": 466,
+        "h": 681
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 681
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "texture.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 2916,
+      "h": 2103
+    },
+    "scale": 1
+  }
+}

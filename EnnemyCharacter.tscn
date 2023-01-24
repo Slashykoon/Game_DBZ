@@ -1,0 +1,170 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Sprites/Cell.png" type="Texture" id=1]
+[ext_resource path="res://EnnemyCharacter.cs" type="Script" id=3]
+
+[sub_resource type="Animation" id=38]
+resource_name = "Hurt"
+length = 0.4
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 9, 8009, 107, 184 ), Rect2( 124, 8010, 97, 182 ), Rect2( 240, 8024, 91, 168 ), Rect2( 354, 8038, 94, 151 ), Rect2( 240, 8024, 91, 168 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Stand"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 3, 453, 107, 183 ), Rect2( 118, 452, 107, 184 ), Rect2( 233, 451, 109, 185 ), Rect2( 350, 451, 109, 185 ), Rect2( 233, 451, 109, 185 ), Rect2( 118, 452, 107, 184 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "StandBlock"
+length = 0.6
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 35.8006
+height = 57.7042
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 36.5603, 50.4404 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+[sub_resource type="AnimationNodeStateMachine" id=23]
+graph_offset = Vector2( -545, -53 )
+
+[sub_resource type="AnimationNodeStateMachine" id=24]
+
+[sub_resource type="AnimationNodeStateMachine" id=16]
+
+[sub_resource type="AnimationNodeStateMachine" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+advance_condition = "IdleToMove"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+advance_condition = "IdleToStop"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+advance_condition = "IsAttacking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id=19]
+states/ATTACKING/node = SubResource( 23 )
+states/ATTACKING/position = Vector2( 516.03, -76.1879 )
+states/DEFENDING/node = SubResource( 24 )
+states/DEFENDING/position = Vector2( 401.762, 246.833 )
+states/MOVING/node = SubResource( 16 )
+states/MOVING/position = Vector2( 1046.33, 189.667 )
+states/STANDING/node = SubResource( 14 )
+states/STANDING/position = Vector2( 631, 106.334 )
+transitions = [ "STANDING", "MOVING", SubResource( 17 ), "MOVING", "STANDING", SubResource( 18 ), "MOVING", "DEFENDING", SubResource( 25 ), "DEFENDING", "STANDING", SubResource( 26 ), "DEFENDING", "MOVING", SubResource( 27 ), "STANDING", "DEFENDING", SubResource( 28 ), "MOVING", "ATTACKING", SubResource( 29 ), "DEFENDING", "ATTACKING", SubResource( 30 ), "STANDING", "ATTACKING", SubResource( 31 ), "ATTACKING", "STANDING", SubResource( 32 ), "ATTACKING", "DEFENDING", SubResource( 33 ), "ATTACKING", "MOVING", SubResource( 34 ) ]
+graph_offset = Vector2( 238.429, -132.314 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=20]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=35]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=36]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=22]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=37]
+
+[node name="BodyEnnemy" type="KinematicBody2D"]
+position = Vector2( -0.320419, -31.4217 )
+scale = Vector2( -1, 1 )
+script = ExtResource( 3 )
+
+[node name="SpriteAnimation" type="AnimationPlayer" parent="."]
+anims/Hurt = SubResource( 38 )
+anims/Stand = SubResource( 1 )
+anims/StandBlock = SubResource( 11 )
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2( -0.297119, 3.49141 )
+shape = SubResource( 5 )
+
+[node name="HitArea" type="Area2D" parent="."]
+show_behind_parent = true
+position = Vector2( 0.110138, 1.54823 )
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionHit" type="CollisionShape2D" parent="HitArea"]
+position = Vector2( 43.461, 5.29164 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 3.11814, -6.01357 )
+shape = SubResource( 7 )
+disabled = true
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 0.5, 0.5 )
+flip_h = true
+region_enabled = true
+region_rect = Rect2( 9, 8009, 107, 184 )
+
+[node name="StateMachine" type="AnimationTree" parent="."]
+tree_root = SubResource( 19 )
+anim_player = NodePath("../SpriteAnimation")
+active = true
+parameters/playback = SubResource( 20 )
+parameters/conditions/IdleToMove = false
+parameters/conditions/IdleToStop = false
+parameters/conditions/IsAttacking = false
+parameters/ATTACKING/playback = SubResource( 35 )
+parameters/DEFENDING/playback = SubResource( 36 )
+parameters/MOVING/playback = SubResource( 22 )
+parameters/STANDING/playback = SubResource( 37 )

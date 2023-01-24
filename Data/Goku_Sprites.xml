@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TextureAtlas Name="Goku" width="1819" height="9139" scale="1" format="RGBA8888">
+  <!-- -->
+  <sprite n="Stand/Goku1.PNG" x="9" y="36" w="105" h="106" pX="0.5" pY="0.5"/>
+  <sprite n="Stand/Goku2.PNG" x="123" y="360" w="106" h="108" pX="0.5" pY="0.5"/>
+  <sprite n="Stand/Goku3.PNG" x="235" y="359" w="109" h="109" pX="0.5" pY="0.5"/>
+  <sprite n="Stand/Goku4.PNG" x="348" y="358" w="111" h="110" pX="0.5" pY="0.5"/>
+  <!-- -->
+  <sprite n="Walk/Goku1.PNG" x="3" y="590" w="106" h="108" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Goku2.PNG" x="113" y="589" w="105" h="109" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Goku3.PNG" x="224" y="588" w="103" h="110" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Goku4.PNG" x="336" y="585" w="99" h="113" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Goku5.PNG" x="448" y="584" w="95" h="114" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Goku6.PNG" x="558" y="584" w="94" h="114" pX="0.5" pY="0.5"/>
+  <!-- -->
+  <sprite n="StandWinded/Goku1.PNG" x="3" y="476" w="99" h="103" pX="0.5" pY="0.5"/>
+  <sprite n="StandWinded/Goku2.PNG" x="107" y="475" w="98" h="104" pX="0.5" pY="0.5"/>
+  <sprite n="StandWinded/Goku3.PNG" x="211" y="474" w="97" h="105" pX="0.5" pY="0.5"/>
+  <sprite n="StandWinded/Goku4.PNG" x="314" y="473" w="97" h="106" pX="0.5" pY="0.5"/>
+  <!-- -->
+  <sprite n="StandBlock/Goku1.PNG" x="3" y="711" w="94" h="112" pX="0.5" pY="0.5"/>
+  <sprite n="StandBlock/Goku2.PNG" x="102" y="703" w="95" h="121" pX="0.5" pY="0.5"/>
+  <sprite n="StandBlock/Goku3.PNG" x="201" y="705" w="94" h="119" pX="0.5" pY="0.5"/>
+  <!-- -->
+  <sprite n="CrouchBlock/Goku1.PNG" x="3" y="831" w="80" h="94" pX="0.5" pY="0.5"/>
+  <sprite n="CrouchBlock/Goku2.PNG" x="88" y="829" w="77" h="99" pX="0.5" pY="0.5"/>
+  <sprite n="CrouchBlock/Goku3.PNG" x="176" y="832" w="72" h="97" pX="0.5" pY="0.5"/>
+  <!-- -->
+  <sprite n="AirBlock/Goku1.PNG" x="0" y="687" w="70" h="117" pX="0.5" pY="0.5"/>
+  <sprite n="AirBlock/Goku2.PNG" x="95" y="675" w="63" h="129" pX="0.5" pY="0.5"/>
+  <sprite n="AirBlock/Goku3.PNG" x="183" y="679" w="58" h="125" pX="0.5" pY="0.5"/>
+  <!-- -->
+  <sprite n="Up/Goku1.PNG" x="7" y="1122" w="99" h="106" pX="0.5" pY="0.5"/>
+  <sprite n="Up/Goku2.PNG" x="120" y="1078" w="69" h="154" pX="0.5" pY="0.5"/>
+  <sprite n="Up/Goku3.PNG" x="221" y="1081" w="78" h="144" pX="0.5" pY="0.5"/>
+  <sprite n="Up/Goku4.PNG" x="324" y="1092" w="83" h="109" pX="0.5" pY="0.5"/>
+  <sprite n="Down/Goku1.PNG" x="431" y="1089" w="74" h="124" pX="0.5" pY="0.5"/>
+  <sprite n="Down/Goku2.PNG" x="544" y="1079" w="60" h="149" pX="0.5" pY="0.5"/>
+  <sprite n="Down/Goku3.PNG" x="663" y="1068" w="53" h="162" pX="0.5" pY="0.5"/>
+  <sprite n="Down/Goku4.PNG" x="756" y="1129" w="97" h="99" pX="0.5" pY="0.5"/>
+  <!-- -->
+  <sprite n="PrepareLaunch/Goku1.PNG" x="3" y="1238" w="93" h="102" pX="0.5" pY="0.5"/>
+  <sprite n="PrepareLaunch/Goku2.PNG" x="121" y="1245" w="92" h="98" pX="0.5" pY="0.5"/>
+  <sprite n="PrepareLaunch/Goku3.PNG" x="229" y="1237" w="86" h="101" pX="0.5" pY="0.5"/>
+  <!-- -->
+  <sprite n="FastAdvance/Goku1.PNG" x="7" y="1367" w="98" h="89" pX="0.5" pY="0.5"/>
+  <sprite n="FastAdvance/Goku2.PNG" x="150" y="1350" w="143" h="78" pX="0.5" pY="0.5"/>
+  <sprite n="FastAdvance/Goku3.PNG" x="321" y="1348" w="74" h="119" pX="0.5" pY="0.5"/>
+  <!-- -->
+  <sprite n="Power/Goku1.PNG" x="23" y="1711" w="55" h="154" pX="0.5" pY="0.5"/>
+  <sprite n="Power/Goku2.PNG" x="132" y="1712" w="50" h="153" pX="0.5" pY="0.5"/>
+  <sprite n="Power/Goku3.PNG" x="222" y="1720" w="72" h="144" pX="0.5" pY="0.5"/>
+  <sprite n="Power/Goku4.PNG" x="315" y="1753" w="100" h="106" pX="0.5" pY="0.5"/>
+  <sprite n="Power/Goku5.PNG" x="419" y="1753" w="100" h="106" pX="0.5" pY="0.5"/>
+  <!-- -->
+  <sprite n="Punch/Goku1.PNG" x="50" y="1872" w="85" h="114" pX="0.5" pY="0.5"/>
+  <sprite n="Punch/Goku2.PNG" x="150" y="1870" w="143" h="117" pX="0.5" pY="0.5"/>
+  <sprite n="Punch/Goku3.PNG" x="310" y="1872" w="130" h="114" pX="0.5" pY="0.5"/>
+  <sprite n="Punch/Goku4.PNG" x="485" y="1884" w="98" h="101" pX="0.5" pY="0.5"/>
+  <!-- -->
+  <sprite n="Kick/Goku1.PNG" x="55" y="2002" w="73" h="131" pX="0.5" pY="0.5"/>
+  <sprite n="Kick/Goku2.PNG" x="166" y="1997" w="123" h="111" pX="0.5" pY="0.5"/>
+  <sprite n="Kick/Goku3.PNG" x="329" y="2007" w="133" h="95" pX="0.5" pY="0.5"/>
+  <sprite n="Kick/Goku4.PNG" x="529" y="2000" w="86" h="128" pX="0.5" pY="0.5"/>
+  <sprite n="Kick/Goku5.PNG" x="701" y="1992" w="113" h="129" pX="0.5" pY="0.5"/>
+  <sprite n="Kick/Goku6.PNG" x="857" y="2004" w="97" h="136" pX="0.5" pY="0.5"/>
+
+
+
+  <!-- -->
+  <sprite n="Walk/Goku1.PNG" x="390" y="304" w="106" h="108" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Goku2.PNG" x="521" y="303" w="105" h="109" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Goku3.PNG" x="651" y="302" w="103" h="110" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Goku4.PNG" x="779" y="299" w="99" h="113" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Goku5.PNG" x="903" y="298" w="95" h="114" pX="0.5" pY="0.5"/>
+  <sprite n="Walk/Goku6.PNG" x="1023" y="298" w="95" h="114" pX="0.5" pY="0.5"/>
+  <!-- OK -->
+
+
+  
+</TextureAtlas>
