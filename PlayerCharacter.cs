@@ -4,6 +4,7 @@ using System.Collections;
 
 public class PlayerCharacter : KinematicBody2D
 {
+    [Signal] public delegate void HitDamageChanged(int newDmg);
 
     private enum eTypeChar{
         PLAYER,
@@ -21,6 +22,7 @@ public class PlayerCharacter : KinematicBody2D
     public Sprite pSprite;
     public AnimationTree pAnimationTree;
     //public AnimationNodeStateMachinePlayback pStateMachine;
+    
     Stack ListSequence = new Stack();
 
     public partial class cStatePlayer
@@ -34,7 +36,6 @@ public class PlayerCharacter : KinematicBody2D
     
     }
     cStatePlayer StatePlayer = new cStatePlayer();
-
 
 
     public void InitCharacter(int pHealth, int pKiLvl, int pSpeedFactor , short TypeOfChar, Vector2 PositionCoord)
@@ -66,18 +67,25 @@ public class PlayerCharacter : KinematicBody2D
     }
 
     public override void _Ready()
-    {
+    {  
         HurtArea = (Area2D)GetNode("DamageArea");
         HitBox = (Area2D)GetNode("HitArea");
 
         AnimPlayer = (AnimationPlayer)GetNode("SpriteAnimation"); 
-        pAnimationTree = (AnimationTree)GetNode("StateMachine");
+        //pAnimationTree = (AnimationTree)GetNode("StateMachine");
         //pStateMachine = (AnimationNodeStateMachinePlayback) pAnimationTree.Get("parameters/playback");
         pSprite = (Sprite)GetNode("Sprite");
     
         HurtArea.Connect("area_entered", this, "_on_DamageArea_entered");
         HitBox.Connect("area_entered", this, "_on_HitArea_entered");
         AnimPlayer.Connect("animation_finished", this, "_on_Animation_Finished");
+
+        //pStateMachine.InitialStatePath="State";
+        /*var SMToAdd = GD.Load<CSharpScript>("res://StateMachine.cs").New() as StateMachine;
+        SMToAdd.InitialStatePath="State"; //TODO mettre stand ou idle 
+        var StateToAdd = GD.Load<CSharpScript>("res://State.cs").New() as State; ///TODO creer un idle qui se reference sur state
+        AddChild(SMToAdd); 
+        SMToAdd.AddChild(StateToAdd);*/
     }
 
     public void _on_HitArea_entered(Area2D area)
@@ -100,21 +108,23 @@ public class PlayerCharacter : KinematicBody2D
     public void _on_Animation_Finished(String AnimName)
     {
         if(AnimName == "Stand"){}
-        if(AnimName == "Punch" || AnimName == "Kick"){
+        if(AnimName == "Punch" || AnimName == "Kick" || AnimName =="Punch_2"){
             StatePlayer.IsAttacking = false;
             ListSequence.Pop();
         }
-        //if(AnimName == "Kick"){StatePlayer.IsAttacking = false;}
         if(AnimName == "Hurt"){StatePlayer.IsHurt = false;}
     }
 
 
     public void GetSequenceToExecute()
     {
+        ListSequence.Push("Punch_2");
         ListSequence.Push("Punch");
         ListSequence.Push("Kick");
         ListSequence.Push("Kick");
         ListSequence.Push("Punch");
+        ListSequence.Push("START_ENGAGING");
+        
         //ListSequence.Push("SET_MOVING_SPEED:250");
     }
 
@@ -123,16 +133,29 @@ public class PlayerCharacter : KinematicBody2D
     {
         if(ListSequence.Count > 0)
         {
-            //remplacer par un case
-            if((string)ListSequence.Peek() == "Punch" && !StatePlayer.IsAttacking )
+            switch((string)ListSequence.Peek()) 
             {
-                AnimPlayer.Play("Punch");
-                StatePlayer.IsAttacking = true;
-            }
-            if((string)ListSequence.Peek() == "Kick" && !StatePlayer.IsAttacking)
-            {
-                AnimPlayer.Play("Kick");
-                StatePlayer.IsAttacking = true;
+                case "Punch":
+                    EmitSignal("HitDamageChanged",5);
+                    AnimPlayer.Play("Punch");
+                    StatePlayer.IsAttacking = true;
+                    break;
+                case "Punch_2":
+                    EmitSignal("HitDamageChanged",8);
+                    AnimPlayer.Play("Punch_2");
+                    StatePlayer.IsAttacking = true;
+                    break;
+                case "Kick":
+                    EmitSignal("HitDamageChanged",10);
+                    AnimPlayer.Play("Kick");
+                    StatePlayer.IsAttacking = true;
+                    break;
+                case "START_ENGAGING":
+                    StatePlayer.IsEngaging = true;
+                    ListSequence.Pop();
+                    break;
+                default:
+                    break;
             }
         }
     }

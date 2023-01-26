@@ -79,6 +79,13 @@ public class EnnemyCharacter : KinematicBody2D
         HurtArea.Connect("area_entered", this, "_on_DamageArea_entered");
         HitBox.Connect("area_entered", this, "_on_HitArea_entered");
         AnimPlayer.Connect("animation_finished", this, "_on_Animation_Finished");
+
+        GetNode<Node>("../Body").Connect("HitDamageChanged", this, "OnHitDamageChanged");
+    }
+
+    public void OnHitDamageChanged(int DmgRcv)
+    {
+        GD.Print(DmgRcv);
     }
 
     public void _on_HitArea_entered(Area2D area)
@@ -105,6 +112,7 @@ public class EnnemyCharacter : KinematicBody2D
     {
         if(AnimName == "Stand"){}
         if(AnimName == "Punch"){StatePlayer.IsAttacking=false;}
+        if(AnimName == "Punch_2"){StatePlayer.IsAttacking=false;}
         if(AnimName == "Kick"){StatePlayer.IsAttacking=false;}
         if(AnimName == "Hurt"){StatePlayer.IsHurt=false;}
     }

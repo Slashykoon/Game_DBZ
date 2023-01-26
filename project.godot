@@ -9,17 +9,17 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Reference",
+"base": "KinematicBody2D",
 "class": "Ennemy",
 "language": "GDScript",
 "path": "res://old_code/Player_CellFinal.gd"
 }, {
-"base": "Reference",
+"base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://old_code/Player_Gohan.gd"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "Stage",
 "language": "GDScript",
 "path": "res://old_code/Stage.gd"

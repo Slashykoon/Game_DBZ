@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Sprites/Cell.png" type="Texture" id=1]
 [ext_resource path="res://EnnemyCharacter.cs" type="Script" id=3]
@@ -40,6 +40,24 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=11]
 resource_name = "StandBlock"
 length = 0.6
+
+[sub_resource type="Animation" id=39]
+resource_name = "Walk"
+length = 1.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 18, 828, 116, 169 ), Rect2( 153, 829, 116, 173 ), Rect2( 294, 828, 109, 174 ), Rect2( 435, 826, 101, 177 ), Rect2( 570, 826, 98, 177 ), Rect2( 687, 826, 126, 177 ), Rect2( 813, 828, 138, 175 ), Rect2( 955, 827, 125, 176 ), Rect2( 1104, 826, 105, 177 ), Rect2( 1245, 827, 102, 172 ) ]
+}
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 35.8006
@@ -123,6 +141,7 @@ script = ExtResource( 3 )
 anims/Hurt = SubResource( 38 )
 anims/Stand = SubResource( 1 )
 anims/StandBlock = SubResource( 11 )
+anims/Walk = SubResource( 39 )
 
 [node name="DamageArea" type="Area2D" parent="."]
 collision_layer = 4
@@ -154,7 +173,7 @@ texture = ExtResource( 1 )
 offset = Vector2( 0.5, 0.5 )
 flip_h = true
 region_enabled = true
-region_rect = Rect2( 9, 8009, 107, 184 )
+region_rect = Rect2( 240, 8024, 91, 168 )
 
 [node name="StateMachine" type="AnimationTree" parent="."]
 tree_root = SubResource( 19 )

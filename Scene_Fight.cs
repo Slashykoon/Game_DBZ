@@ -25,6 +25,7 @@ public class Scene_Fight : Node2D
 
         PlayerCharInstance = (PlayerCharacter)PackedPlayerChar.Instance();
         EnnemyCharInstance = (EnnemyCharacter)PackedEnnemyChar.Instance();
+        
         //EnnemyCharInstance = (PlayerCharacter)PackedEnnemyChar.Instance();
 
         PlayerCharInstance.InitCharacter(100,100,210,(int)eTypeChar.PLAYER,new Vector2(200,200));
