@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 public class EnnemyState : State
 {
-    public EnnemyCharacter Player;
+    public EnnemyCharacter Ennemy;
     public override async void _Ready()
     {
         await ToSignal(Owner, "ready");
-        Player= Owner as EnnemyCharacter;  
+        Ennemy= Owner as EnnemyCharacter;  
     }
 
     public override void Handle_Input(InputEvent _Event ){}

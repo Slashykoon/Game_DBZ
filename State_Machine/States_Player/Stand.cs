@@ -32,10 +32,7 @@ public class Stand : PlayerState
             state_machine.Transition_To("FallingDown",new Dictionary<string, string>());
         }
 
-        if(Mathf.Abs(Player.Position.y - Player.TargetPosition.y) > 80 && (Player.Position.y < Player.TargetPosition.y)) 
-        {
-            state_machine.Transition_To("FallingDown",new Dictionary<string, string>());
-        }
+
 
         
     }

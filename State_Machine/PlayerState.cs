@@ -9,6 +9,7 @@ public class PlayerState : State
     public override async void _Ready()
     {
         await ToSignal(Owner, "ready");
+
         Player= Owner as PlayerCharacter;  
     }
 
