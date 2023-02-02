@@ -2,46 +2,47 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class StateMachine : Node2D
+public class StateMachine : Node
 {
 
     [Signal] public delegate void Transitioned(string state_name);
     
     [Export]public NodePath InitialStatePath= new NodePath();
     
-    public State state;
+    public State ActiveState;
 
-    public override void _Ready()
+    public override async void _Ready()
     {
-        state = (State)GetNode(InitialStatePath);
+        await ToSignal(Owner, "ready");
+        ActiveState = (State)GetNode(InitialStatePath);
         foreach(State child in GetChildren())
         {
             child.state_machine = this;
         }
-        state.Enter(new Dictionary<string, string>());
+        ActiveState.Enter(new Dictionary<string, string>());
     }
 
     public override void _UnhandledInput(InputEvent @event)
     {
-        if(state!=null)
+        if(ActiveState!=null)
         {
-            state.Handle_Input(@event);
+            ActiveState.Handle_Input(@event);
         }
     }
 
     public override void _Process(float delta)
     {
-        if(state!=null)
+        if(ActiveState!=null)
         {
-            state.Update(delta);
+            ActiveState.Update(delta);
         }
     }
 
     public override void _PhysicsProcess(float delta)
     {
-        if(state!=null)
+        if(ActiveState!=null)
         {
-            state.Physics_Update(delta);
+            ActiveState.Physics_Update(delta);
         }
     }
 
@@ -51,10 +52,10 @@ public class StateMachine : Node2D
         {
             return;
         }
-        state.Exit();
-        state=(State) GetNode(TargetStateName);
-        state.Enter(msg);
-        EmitSignal("Transitioned", state.Name);
+        ActiveState.Exit();
+        ActiveState=(State) GetNode(TargetStateName);
+        ActiveState.Enter(msg);
+        EmitSignal("Transitioned", ActiveState.Name);
     }
 
     

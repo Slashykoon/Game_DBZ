@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class State : Node2D
+public class State : Node
 {
 
     public StateMachine state_machine = null;

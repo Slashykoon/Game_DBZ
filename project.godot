@@ -44,6 +44,14 @@ window/size/height=800
 window/size/resizable=false
 window/size/always_on_top=true
 
+[editor]
+
+script_templates_search_path="res://addons/xsm/templates/"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/xsm/plugin.cfg" )
+
 [layer_names]
 
 2d_render/layer_1="Environment"

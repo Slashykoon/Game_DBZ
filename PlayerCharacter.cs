@@ -5,6 +5,9 @@ using System.Collections;
 public class PlayerCharacter : KinematicBody2D
 {
     [Signal] public delegate void HitDamageChanged(int newDmg);
+    [Signal] public delegate void SignalAnimationEnd(string AnimName);
+    [Signal] public delegate void SignalDamageAreEntered();
+
 
     private enum eTypeChar{
         PLAYER,
@@ -21,9 +24,8 @@ public class PlayerCharacter : KinematicBody2D
     public Area2D HitBox;
     public Sprite pSprite;
     public AnimationTree pAnimationTree;
-    //public AnimationNodeStateMachinePlayback pStateMachine;
     
-    Stack ListSequence = new Stack();
+    public Stack ListSequence = new Stack();
 
     public partial class cStatePlayer
     {
@@ -33,10 +35,15 @@ public class PlayerCharacter : KinematicBody2D
         public bool IsHurt;
         public bool IsCollided;
         public bool bDebugMode;
+        public bool IsJumping;
+        public bool IsFalling;
     
     }
-    cStatePlayer StatePlayer = new cStatePlayer();
-
+    public cStatePlayer StatePlayer = new cStatePlayer();
+    public StateMachine pStateMachine;
+    public RandomNumberGenerator RandomGen;
+    public uint DefenseFactor = 5;
+ 
 
     public void InitCharacter(int pHealth, int pKiLvl, int pSpeedFactor , short TypeOfChar, Vector2 PositionCoord)
     {
@@ -72,22 +79,22 @@ public class PlayerCharacter : KinematicBody2D
         HitBox = (Area2D)GetNode("HitArea");
 
         AnimPlayer = (AnimationPlayer)GetNode("SpriteAnimation"); 
-        //pAnimationTree = (AnimationTree)GetNode("StateMachine");
-        //pStateMachine = (AnimationNodeStateMachinePlayback) pAnimationTree.Get("parameters/playback");
         pSprite = (Sprite)GetNode("Sprite");
-    
+        pStateMachine = (StateMachine)GetNode("StateMachine");
+
         HurtArea.Connect("area_entered", this, "_on_DamageArea_entered");
         HitBox.Connect("area_entered", this, "_on_HitArea_entered");
         AnimPlayer.Connect("animation_finished", this, "_on_Animation_Finished");
 
-        //pStateMachine.InitialStatePath="State";
-        /*var SMToAdd = GD.Load<CSharpScript>("res://StateMachine.cs").New() as StateMachine;
-        SMToAdd.InitialStatePath="State"; //TODO mettre stand ou idle 
-        var StateToAdd = GD.Load<CSharpScript>("res://State.cs").New() as State; ///TODO creer un idle qui se reference sur state
-        AddChild(SMToAdd); 
-        SMToAdd.AddChild(StateToAdd);*/
+        RandomGen = new RandomNumberGenerator();
+
+        pStateMachine.Connect("Transitioned", this, "On_Transition_End");
     }
 
+    public void On_Transition_End(String ActiveStateName)
+    {
+        GD.Print(ActiveStateName);
+    }
     public void _on_HitArea_entered(Area2D area)
     {
     }
@@ -101,71 +108,35 @@ public class PlayerCharacter : KinematicBody2D
         if(area.Name == "HitArea" && pTypeOfChar==(int)eTypeChar.ENNEMY)
         {
             GD.Print("ENNEMY hit by PLAYER");
-            StatePlayer.IsHurt = true;
+            EmitSignal("SignalDamageAreEntered");
         }
     }
 
     public void _on_Animation_Finished(String AnimName)
     {
-        if(AnimName == "Stand"){}
-        if(AnimName == "Punch" || AnimName == "Kick" || AnimName =="Punch_2"){
-            StatePlayer.IsAttacking = false;
-            ListSequence.Pop();
-        }
-        if(AnimName == "Hurt"){StatePlayer.IsHurt = false;}
+        EmitSignal("SignalAnimationEnd", AnimName);
     }
 
 
     public void GetSequenceToExecute()
     {
         ListSequence.Push("Punch_2");
+        ListSequence.Push("Kick");
+        ListSequence.Push("Punch");
         ListSequence.Push("Punch");
         ListSequence.Push("Kick");
         ListSequence.Push("Kick");
         ListSequence.Push("Punch");
         ListSequence.Push("START_ENGAGING");
-        
         //ListSequence.Push("SET_MOVING_SPEED:250");
-    }
-
-
-    public void ExecuteSequence()
-    {
-        if(ListSequence.Count > 0)
-        {
-            switch((string)ListSequence.Peek()) 
-            {
-                case "Punch":
-                    EmitSignal("HitDamageChanged",5);
-                    AnimPlayer.Play("Punch");
-                    StatePlayer.IsAttacking = true;
-                    break;
-                case "Punch_2":
-                    EmitSignal("HitDamageChanged",8);
-                    AnimPlayer.Play("Punch_2");
-                    StatePlayer.IsAttacking = true;
-                    break;
-                case "Kick":
-                    EmitSignal("HitDamageChanged",10);
-                    AnimPlayer.Play("Kick");
-                    StatePlayer.IsAttacking = true;
-                    break;
-                case "START_ENGAGING":
-                    StatePlayer.IsEngaging = true;
-                    ListSequence.Pop();
-                    break;
-                default:
-                    break;
-            }
-        }
     }
 
 
     public void AdjustOrientation()
     {
-        if (pTypeOfChar == (int)eTypeChar.PLAYER){ pSprite.FlipH = Velocity.x > 0; }
+        if (pTypeOfChar == (int)eTypeChar.PLAYER){ pSprite.FlipH = Velocity.x > -1; }
         if (pTypeOfChar == (int)eTypeChar.PLAYER){ HitBox.RotationDegrees = Velocity.x > 0? 0 : 180; }
-        if (pTypeOfChar == (int)eTypeChar.ENNEMY){ pSprite.FlipH = Velocity.x < 0; }
+        if (pTypeOfChar == (int)eTypeChar.ENNEMY){ pSprite.FlipH = Velocity.x < -1; }
         if (pTypeOfChar == (int)eTypeChar.ENNEMY){ HitBox.RotationDegrees = Velocity.x < 0? 0 : 180; }
     }
 
@@ -175,24 +146,16 @@ public class PlayerCharacter : KinematicBody2D
         if(pTypeOfChar == (int)eTypeChar.PLAYER && !StatePlayer.bDebugMode){ TargetPosition = GetTargetPosition(); }
         if(pTypeOfChar == (int)eTypeChar.ENNEMY){ TargetPosition = GetTargetPosition();}
 
-        Velocity = Position.DirectionTo(TargetPosition) * Speed_factor;
-
-        ExecuteSequence();
-
-        if (Position.DistanceTo(TargetPosition) > 100 && (StatePlayer.IsEngaging||StatePlayer.bDebugMode) && TargetPosition != Vector2.Zero) 
+        if (StatePlayer.bDebugMode)
         {
+            Velocity = Position.DirectionTo(TargetPosition) * Speed_factor;
             MoveAndSlide(Velocity,null,false,4,(float)0.785398,false);
-            if(!StatePlayer.IsAttacking && !StatePlayer.IsHurt)
-            {
-                AnimPlayer.Play("Walk");
-         
-            }
         }
-        else if ((Position.DistanceTo(TargetPosition) <= 100 || !StatePlayer.IsEngaging) && !StatePlayer.IsAttacking && !StatePlayer.IsHurt )
-        {
-            AnimPlayer.Play("Stand");
+        /*GD.Print(Position.y);
+        GD.Print(TargetPosition.y);
+        GD.Print(Mathf.Abs(Position.y - TargetPosition.y));
+        GD.Print("---------");*/
 
-        }
         AdjustOrientation();
     }
 
@@ -202,21 +165,7 @@ public class PlayerCharacter : KinematicBody2D
 
         if (inputEvent is InputEventKey keyEvent && keyEvent.Pressed )
         {
-            /*if ((KeyList)keyEvent.Scancode == KeyList.A && pTypeOfChar == (int)eTypeChar.PLAYER)
-            {
-                AnimPlayer.Play("Punch");
-                StatePlayer.IsAttacking = true;
-            }
-            if ((KeyList)keyEvent.Scancode == KeyList.Z && pTypeOfChar == (int)eTypeChar.PLAYER)
-            {
-                AnimPlayer.Play("Kick");
-                StatePlayer.IsAttacking = true;
-            }*/
-            if ((KeyList)keyEvent.Scancode == KeyList.E && pTypeOfChar == (int)eTypeChar.PLAYER)
-            {
-                StatePlayer.IsEngaging = !StatePlayer.IsEngaging ;
-                GD.Print("ENGAGING : " + StatePlayer.IsEngaging );
-            }
+
             if ((KeyList)keyEvent.Scancode == KeyList.R && pTypeOfChar == (int)eTypeChar.ENNEMY)
             {
                 StatePlayer.IsEngaging = !StatePlayer.IsEngaging ;

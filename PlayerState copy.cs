@@ -3,13 +3,13 @@ using System;
 using System.Collections.Generic;
 
 
-public class PlayerState : State
+public class EnnemyState : State
 {
-    public PlayerCharacter Player;
+    public EnnemyCharacter Player;
     public override async void _Ready()
     {
         await ToSignal(Owner, "ready");
-        Player= Owner as PlayerCharacter;  
+        Player= Owner as EnnemyCharacter;  
     }
 
     public override void Handle_Input(InputEvent _Event ){}

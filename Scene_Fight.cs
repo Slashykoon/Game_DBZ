@@ -30,6 +30,7 @@ public class Scene_Fight : Node2D
 
         PlayerCharInstance.InitCharacter(100,100,210,(int)eTypeChar.PLAYER,new Vector2(200,200));
         EnnemyCharInstance.InitCharacter(100,100,210,(int)eTypeChar.ENNEMY,new Vector2(850,200));
+        
         AddChild(PlayerCharInstance);
         AddChild(EnnemyCharInstance);
 
